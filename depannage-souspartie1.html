@@ -92,6 +92,10 @@
   </header>
 
   <main>
+    <p><strong>
+      Détection d’un défaut récurrent en production
+    </strong></p>
+
     <p>
       Un défaut récurrent est apparu sur les cartes CPU N97 utilisées dans les panels PC destinés aux clients. Ce dysfonctionnement affecte l’affichage via l’écran LVDS intégré dans le produit fini. Il est détecté uniquement lors du test final, juste avant expédition, et concerne environ 9 % des cartes testées. Faute de solution de réparation locale, l’entreprise est contrainte de retourner les cartes au fabricant à Taïwan, ce qui entraîne des délais importants et un surcoût significatif dû au transport.
     </p>
@@ -109,14 +113,22 @@
       Je me suis rendu sur le site Émile Zola avec la procédure de test à appliquer. À mon arrivée, l’équipe de production m’a confié les moyens nécessaires à l’opération. Un écran LVDS de quinze pouces, identique à celui utilisé dans le produit fini, était mis à disposition, ainsi qu’un câble LVDS pour la transmission du signal d’affichage, un câble Enable Backlight pour activer l’écran et gérer sa luminosité, et un câble FrontPanel regroupant les boutons d’allumage, de redémarrage et les témoins d’état. Le poste de test était aussi équipé d’un clavier, d’une souris, d’un écran connecté en HDMI, d’un câble d’alimentation pour le produit et l’écran, ainsi que d’un voltmètre muni de pointes de touche. L’environnement de travail, avec le produit semi-fini câblé et prêt pour la phase de test, est présenté sur la figure 1.
     </p>
 
+    <p><strong>
+      Procédure de test détaillée sur banc
+    </strong></p> 
+
     <figure>
-      <img src="figure2-Tableau-test-semi-fini.jpg" alt="Check list finale" />
+      <img src="figure2-Tableau-test-semi-fini.jpg" alt="Tableau de test des 50 semi-finis" />
       <figcaption>Figure 2 – Tableau de test des 50 semi-finis</figcaption>
     </figure>
 
     <p>
       Pour chaque produit semi-fini, je débutais par renseigner les éléments d’identification, à savoir le numéro de série de la carte et le code spécifique du panel PC, sur le document présenté en figure 2. Je connectais ensuite le clavier, la souris et l’écran en HDMI, puis alimentais le produit et l’écran. Les câbles LVDS, Enable Backlight et FrontPanel étaient branchés avec soin. Après mise sous tension du panel, j’entrais dans le BIOS à l’aide de la touche « Suppr » afin de relever la version du BIOS, attendue à F4, puis j’activais l’affichage LVDS en configurant une résolution de 1024 par 768 pixels avec un canal de 24 bits, paramétrage requis pour assurer la compatibilité avec l’écran LVDS fourni.
     </p>
+
+    <p><strong>
+      Critères de validation et mesures
+    </strong></p> 
     
     <p>
       Une fois ces réglages sauvegardés, l’ordinateur redémarrait et, si le test était concluant, Windows affichait l’image sur l’écran LVDS. Je m’assurais alors que deux écrans étaient bien détectés par le système d’exploitation. Ensuite, je procédais à une série de mesures électriques. À l’aide du voltmètre, je vérifiais la tension sur le pin 1 du câble LVDS, où une valeur proche de 3,33 volts était attendue. Je poursuivais avec la mesure sur le pin 2 du câble Enable Backlight, utilisé comme signal PWM pour la luminosité. La tension y était généralement de l’ordre de 3 volts. Le pin 3, responsable de l’activation de l’écran à l’état haut, devait lui aussi indiquer une tension de 3,33 volts. Enfin, le pin 5, qui alimente les LED de l’écran, devait afficher environ 12 volts. Toutes ces valeurs étaient consignées dans le document de suivi.
@@ -126,6 +138,10 @@
       Lorsque l’ensemble des valeurs était conforme et que l’affichage fonctionnait, je considérais la carte comme fonctionnelle. Il était alors nécessaire de remettre l’appareil dans son état initial. Pour cela, je redémarrais afin d’accéder à nouveau au BIOS, où je rétablissais les paramètres d’origine : résolution de 800 par 600 pixels, canal de 12 bits, et désactivation de l’affichage LVDS. Je procédais ensuite à l’extinction de l’appareil et au décâblage méticuleux de tous les éléments connectés, en veillant à ne provoquer aucune dégradation physique comme des marques ou des broches tordues.
     </p>
 
+    <p><strong>
+      Synthèse des résultats et transmission
+    </strong></p> 
+
     <p>
       Cette procédure a été répétée cinquante fois. Dans deux cas, les cartes n°7 et n°12, le processus n’a pas abouti à un affichage sur l’écran LVDS. Après configuration du BIOS et redémarrage, aucun signal n’était présent sur l’écran. Dans les paramètres d’affichage de Windows, un seul écran était détecté. Les mesures électriques ont révélé une tension nulle sur le pin 1 du câble LVDS pour les deux cartes. Sur la carte n°7, le pin 3 était également à 0 volt, signifiant que l’écran n’était pas activé. En revanche, sur la carte n°12, ce même pin était à 3,3 volts, ce qui implique que l’écran aurait dû s’allumer. Dans les deux cas, les tensions mesurées sur les autres pins, notamment celui dédié à l’alimentation des LED, étaient conformes, ce qui suggère un dysfonctionnement situé probablement au niveau de la sortie d’alimentation vers le câble LVDS, ou éventuellement dans la commande d’activation de l’écran pour la carte n°7.
     </p>
@@ -133,6 +149,10 @@
     <p>
       À l’issue des tests, j’ai informé mon supérieur du résultat de l’analyse, à savoir deux cartes défectueuses sur cinquante testées, soit un taux de 4 %, inférieur au taux initialement estimé. J’ai ensuite transmis le rapport de test au service qualité afin de mettre à jour le suivi de production et de faire retirer les deux produits incriminés de la chaîne. Les deux semi-finis concernés ont été remis à l’ingénieur du bureau d’études, Loïc Odeyer, pour tester la solution de dépannage proposée par le fabricant. Cette tentative de réparation n’a pas permis de restaurer le fonctionnement, et les cartes ont été retournées à l’usine à Taïwan.
     </p>
+
+    <p><strong>
+      Retour d’expérience et action corrective
+    </strong></p> 
 
     <p>
       Cette intervention s’est inscrite dans un cadre de maintenance préventive structurée, s’appuyant sur des moyens adaptés, des méthodes rigoureuses et une organisation conforme aux standards de qualité de l’entreprise. Elle a permis non seulement de limiter les pertes opérationnelles mais également de fournir un retour d’expérience précieux aux équipes de conception. Le document produit est réutilisable pour de futures campagnes de contrôle et pourra être intégré dans le système de gestion de maintenance assistée par ordinateur (GMAO) de l’entreprise.

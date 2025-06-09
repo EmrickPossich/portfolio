@@ -92,6 +92,10 @@
   </header>
 
   <main>
+    <p><strong>
+      Problématique rencontrée
+    </strong></p>
+    
     <p>
       Dans le cadre de mon alternance au sein de l’entreprise IPO Technologie, j’ai été confronté à une problématique technique émise par un client majeur, la société Andros. Ce dernier utilise dans son environnement industriel un panel PC inoxydable de la gamme ODYSSEE21CIC, conçu pour fonctionner dans des conditions exigeantes, notamment dans l’agroalimentaire. Ce modèle intègre un écran de 21 pouces et peut être nettoyé à l’aide d’un jet haute pression. Cependant, un dysfonctionnement aléatoire est apparu : lors de l’utilisation, l’image à l’écran se figeait brièvement. Ce défaut étant difficile à reproduire en continu, il a été décidé de ne pas rapatrier immédiatement le matériel en atelier, mais plutôt de conduire une série de tests à distance afin de comprendre l’origine du problème.
     </p>
@@ -103,6 +107,10 @@
     <p>
       Pour établir une base de référence fiable, j’ai commencé par sélectionner un modèle identique (ODYSSEE21CIC en stock IMMO), disponible en interne et destiné à des démonstrations ou à des tests. Ce panel a été installé dans le laboratoire, dans des conditions standard, à température ambiante d’environ 21°C. Plusieurs logiciels spécialisés ont alors été utilisés pour mesurer les performances et les comportements thermiques du système : PerformanceTest V11 a permis de générer un score global pour le processeur, les capacités graphiques (2D/3D), la mémoire vive et le disque SSD ; le logiciel Scope Pro v4.13 (Transcend) a quant à lui mesuré les vitesses de lecture et d’écriture du disque SSD en condition stable (état IDLE, à température basse) ; enfin, un stress test a été conduit via BurnInTest V10.2, mobilisant l’ensemble des ressources matérielles pendant 10 minutes à pleine charge. Pour compléter cette analyse, j’ai utilisé HWMonitor V1.54 afin de relever les températures des cœurs CPU, de la SSD et la puissance électrique consommée.
     </p>
+
+    <p><strong>
+      Déroulement de la procédure de test
+    </strong></p>
 
     <p>
       Une fois les valeurs de référence obtenues, j’ai procédé à une répétition des tests, mais cette fois à distance, en contrôlant le panel via le logiciel TeamViewer installé sur le PC local et sur l’appareil testé. L’objectif de cette étape était de s’assurer que les performances mesurées à distance restaient représentatives de celles constatées localement, malgré la couche logicielle de prise en main à distance. Les résultats ont montré des écarts mineurs, notamment une température SSD légèrement plus élevée à distance, mais des scores de performance relativement proches, comme on peut le voir sur le tableau de comparaison des résultats de la figure 1.
@@ -116,6 +124,10 @@
     <p>
       Cette analyse comparative m’a permis de valider la fiabilité d’un test de conformité effectué à distance, tout en tenant compte des légers écarts que cette configuration pouvait engendrer.
     </p>
+
+    <p><strong>
+      Élaboration d’un guide de test à distance
+    </strong></p>
 
     <p>
       À l’issue de cette phase d’expérimentation, j’ai élaboré une procédure de test complète, claire et structurée, destinée à être utilisée en interne. Elle débute par un titre explicite : « Opération test ODYSSEE21WCICTP à distance », suivi d’un rappel de l’objectif et du contexte du test. J’y ai listé tous les logiciels utilisés, accompagnés de leur version exacte, afin de garantir une parfaite reproductibilité des résultats. Chaque partie de la procédure est détaillée : la configuration des outils, les étapes de test à suivre, la justification de chaque mesure, ainsi que les résultats attendus. L’ensemble est conçu pour permettre à un autre opérateur, même non initié au contexte initial, de comprendre et d’exécuter la démarche.

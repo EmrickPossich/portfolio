@@ -92,9 +92,17 @@
   </header>
 
   <main>
+    <p><strong>
+      Présentation du besoin interne
+    </strong></p>
+
     <p>
       Dans le cadre de ma troisième année d’alternance en BUT GEII, j’ai participé à la conception d’un banc d’essai destiné à simuler une décharge impulsionnelle de 600 V pendant 100 microsecondes. L’objectif était de tester la robustesse d’une carte d’alimentation développée en interne, conformément à la norme IEC 61000-4-5 catégorie 1, qui traite des perturbations électriques transitoires, notamment les effets de la foudre ou des surtensions.
     </p>
+
+    <p><strong>
+      Choix des composants de puissance
+    </strong></p>
 
     <figure>
       <img src="figure1-Schéma-Banc.jpg" alt="Photo du schéma du cicruit de puissance du banc d'essai" />
@@ -130,9 +138,17 @@
       La conséquence de cette chute de tension Vds (9 V) est une diminution de la tension disponible aux bornes de la résistance de décharge, qui passe ainsi à 591 V, ce qui génère un courant de 295,5 A, restant dans la plage acceptable.
     </p>
 
+    <p><strong>
+      Choix des composants de la partie commande du MOSFET
+    </strong></p>
+
     <p>
       Enfin, pour piloter le transistor sur une durée précise de 100 µs avec une tension de commande de 12 V, j’ai utilisé un circuit NE555P en mode bistable. Ce composant est alimenté en 12 V, et sa sortie délivre une tension proche de 11,5 V, suffisante pour saturer le MOSFET. En suivant les recommandations de la datasheet, j’ai configuré les composants associés (résistances et condensateurs) pour générer l’impulsion voulue. Le NE555 est commandé par un microcontrôleur alimenté en 5 V, avec une fréquence d’horloge d’au moins 1 MHz, ce qui garantit une réactivité suffisante pour respecter la fenêtre temporelle étroite imposée.
     </p>
+
+    <p><strong>
+      Conclusion
+    </strong></p>
 
     <p>
       Pour valider l’ensemble des choix technologiques, j’ai modélisé et simulé le circuit sous LTspice. Ces simulations ont permis de confirmer les résultats théoriques, de visualiser certains effets parasites et de détecter de potentielles dérives en conditions réelles. Le document technique que j’ai rédigé a ensuite été présenté à mes responsables, afin de leur démontrer l’adéquation entre les composants sélectionnés, le cahier des charges, les normes applicables, et les contraintes de coût et de faisabilité. Ce travail a également permis de prendre conscience des écarts inévitables entre les performances idéales et les limitations réelles dues à la disponibilité des composants ou aux compromis technologiques dans le domaine exigeant de la haute puissance à temps de commutation très court.

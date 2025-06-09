@@ -92,17 +92,29 @@
   </header>
 
   <main>
+    <p><strong>
+      Présentation du matériel défectueux
+    </strong></p>
+
     <p>
       Dans le cadre de mon alternance en BUT GEII, j’ai été sollicité pour analyser un dysfonctionnement critique observé sur une toute nouvelle gamme de produits, le PAC6. Ce boîtier, composé d’une carte CPU capable de faire fonctionner des systèmes d’exploitation comme Windows et d’une carte dotée de slots BUS passifs pour l’ajout de modules, venait d’être produit pour la première fois dans le cadre d’une commande de 13 unités. Le problème a été détecté au moment du test final, alors que le produit semblait initialement fonctionnel
     </p>
-
+    
     <p>
       Le bug rencontré était le suivant : lors d’un redémarrage de Windows, le système pouvait se bloquer totalement, rendant nécessaire un redémarrage manuel du boîtier. Ce comportement erratique posait un risque majeur en termes de fiabilité. David Ouattara m’a confié la mission de mener des tests pour identifier la cause racine du dysfonctionnement.
     </p>
 
+    <p><strong>
+      Définition d’un protocole de test
+    </strong></p>
+
     <p>
       Des premiers éléments d’enquête m’ont été fournis : le bug apparaissait de manière aléatoire lorsque le clavier était connecté, uniquement sur le site de test final à rue Émile Zola, et non sur le site de Bruyères où se situe mon laboratoire. J’ai donc choisi de me rendre directement à Zola afin d'observer le phénomène dans ses conditions réelles d’apparition. J’y ai conçu un plan de test structuré, en variant les périphériques (deux claviers, deux souris) et les conditions de test (paillasses différentes, sources d’alimentation variées). Chaque configuration était soumise à 50 redémarrages si aucun bug ne survenait.
     </p>
+
+    <p><strong>
+      Comparaison multi-sites et analyse croisée
+    </strong></p>
 
     <p>
       Les résultats ont rapidement mis en évidence que ni la paillasse, ni la référence du clavier, ni le réseau électrique ne semblaient avoir d’impact significatif. Le bug survenait de façon similaire, quel que soit le clavier, souvent en moins de 10 redémarrages. J’ai même observé des cas où le simple branchement d’un clavier déclenchait le problème. Cela m’a conduit à suspecter une influence des périphériques USB sur les charges ou la communication.
@@ -111,6 +123,10 @@
     <p>
       Pour écarter l’hypothèse d’un lien avec le site, j’ai refait exactement les mêmes tests à Bruyères, en reprenant tous les éléments (claviers, souris, alimentation, écran) de Zola. Le bug est réapparu, confirmant que le lieu n'était pas en cause. J’ai ensuite procédé à des tests avec des charges USB simulées, pour maximiser la consommation sur les ports, mais aucun dysfonctionnement n’est apparu, ce qui a permis d’écarter l’hypothèse d’un problème lié à l’intensité.
     </p>
+
+    <p><strong>
+      Identification des causes probables
+    </strong></p>
 
     <figure>
       <img src="figure1-PAC6-Test-Combi.jpg" alt="Tableau Excel d'une série de test sur le PAC6" />
@@ -124,6 +140,10 @@
     <p>
       Cette découverte a permis de cibler la carte CPU comme unique composant susceptible d’être responsable du dysfonctionnement, celle-ci étant la seule variable constante, fabriquée par un fournisseur externe. Malheureusement, je n’avais pas accès à d’autres exemplaires de cette carte pour valider s’il s’agissait d’un défaut de fabrication ou de conception.
     </p>
+
+    <p><strong>
+      Synthèse des résultats et transmission au client
+    </strong></p>
 
     <figure>
       <img src="figure2-Test-Ecran-PAC6.jpg" alt="Tableau des tests d'identifications d'écran fonctionnel" />
