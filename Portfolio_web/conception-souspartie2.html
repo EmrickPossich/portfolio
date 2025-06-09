@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conception - Sous-partie 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 25px;
+      background: linear-gradient(to bottom, #f0f4f8, #dceeff);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #00707a;
+      font-size: 2em;
+      border-bottom: 3px solid #00707a;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    figure {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    nav a {
+      display: inline-block;
+      text-decoration: none;
+      background: #00707a;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #005f64;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul li::marker {
+      color: #00707a; /* Change la couleur des puces */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Conception - Rédiger un dossier de conception</h1>
+  </header>
+
+  <main>
+    <p><strong>
+      Contexte et objectifs du projet
+    </strong></p>
+
+    <p>
+      Dans le cadre de mon alternance chez IPO Technologie, il m’a été confié la conception d’un système embarqué permettant de détecter automatiquement la présence d’un utilisateur devant un panel PC. Cette fonctionnalité, réclamée par certains clients industriels, notamment dans le secteur de l’agroalimentaire, vise à optimiser la consommation énergétique des terminaux en allumant ou éteignant automatiquement l’affichage ou le système selon la présence détectée.
+    </p>
+
+    <p>
+      La carte devait être intégrée de manière universelle dans plusieurs gammes de panel PC de la société, notamment les FUTURA et ODYSSÉE, tout en respectant des contraintes mécaniques, électriques et logicielles strictes. Le système devait également pouvoir être désactivé mécaniquement, être configurable en fonctionnement (mode POWER ou LIGHT) et répondre aux attentes d’intégration et de fiabilité industrielle.
+    </p>
+
+    <p><strong>
+      Choix techniques et conception électronique
+    </strong></p>
+
+    <p>
+      La carte développée, nommée Carte Détection de Présence nommé en interne : « XC240417C », a été conçue en respectant une architecture modulaire s’appuyant sur un microcontrôleur PIC et un capteur PIR. L’ensemble de la logique a été étudié pour qu’en fonction de la présence ou non d’un utilisateur, la carte puisse agir soit en simulant un appui sur le bouton de mise sous tension du panel PC (mode POWER), soit en contrôlant directement le signal Enable Backlight de l’écran (mode LIGHT).
+    </p>
+
+    <p>
+      L’alimentation de la carte est assurée par un port USB du CPU, ce qui garantit son alimentation continue, même lorsque le système est en veille ou éteint. Deux entrées sont connectées au CPU pour vérifier l’état du PC et de l’écran (Power LED+ et Backlight Enable CPU), tandis que deux sorties permettent d’agir sur le bouton Power (via un relais) et sur le rétroéclairage (via un optocoupleur). Le comportement est entièrement configurable via des jumpers, comme précisé dans la documentation fournie au service qualité.
+    </p>
+
+    <p>
+      La figure 1 ci-dessous montre une vue synthétique du schéma de principe de la carte, avec l’interfaçage entre les entrées/sorties et le microcontrôleur.
+    </p>
+
+    
+
+    <figure>
+      <img src="figure1-Schéma-carte-détection.jpg" alt="Schéma de fonctionnement de la carte" />
+      <figcaption><div style="text-align:center; margin:20px 0;"> <strong>Figure 1 – Schéma de fonctionnement de la carte</strong><br> <em>Extrait du dossier de conception : interfaces d’entrée/sortie entre le CPU, l’écran et le microcontrôleur</em> </div> </figcaption>
+    </figure>
+
+    <p><strong>
+      Programmation embarquée et logique logicielle
+    </strong></p>
+
+    <p>
+      Le microcontrôleur a été programmé avec MPLAB X IDE v6.20, et l’architecture logicielle repose sur une boucle principale (While(1)) qui recopie les états du système et déclenche des timers selon les signaux détectés. Deux interruptions principales, gérées par Timer 0 et Timer 2, permettent de temporiser la mise en veille ou le réveil du système via un relais ou un optocoupleur. Un fichier .hex prêt à l’usage a été fourni aux responsables du bureau d’études et est stocké sur le réseau interne sécurisé de l’entreprise.
+    </p>
+
+    <p>
+      Les tests ont validé la stabilité des différentes configurations, et notamment le bon comportement des temps de latence réglés par jumpers (30 s, 1 min, 5 min, 15 min), ainsi que l’efficacité de la logique logicielle dans différents scénarios simulés : mise en veille par inactivité, réveil par détection, extinction automatique de l’écran, etc.
+    </p>
+
+    <p><strong>
+      Validation technique et essais sur panel PC
+    </strong></p>
+
+    <p>
+      Une série complète de tests de validation a été conduite avec différentes configurations matérielles : écrans 15,6 pouces et 21 pouces, cartes CPU IB917 et IB837, tension Enable Backlight de 3,3 V ou 5 V. Ces essais ont confirmé la compatibilité de la carte avec les composants internes des panels PC IPO et ont permis de régler avec précision les ponts diviseurs et les tensions de référence.
+    </p>
+
+    <p>
+      En conditions réelles, la carte a parfaitement fonctionné dans un panel FUTURA en stock IMMO, avec déclenchement de la mise en veille du CPU et extinction de l’écran en fonction de la présence. La figure 2 montre le prototype monté dans le boîtier du panel, illustrant l'intégration propre et compacte dans l’environnement contraint.
+    </p>
+
+    <figure>
+      <img src="figure2-Carte-détection-Futura.jpg" alt="Figure 2 – Intégration physique de la carte détection de présence" />
+      <figcaption><div style="text-align:center; margin:20px 0;"> <strong>Figure 2 – Intégration physique de la carte détection de présence</strong><br> <em>Photo du prototype installé dans un panel FUTURA, avant et arrière du boîtier</em> </div> </figcaption>
+    </figure>
+
+    <p><strong>
+      Conclusion
+    </strong></p>
+
+    <p>
+      Le développement de la carte de détection de présence XC240417C a permis de répondre efficacement aux exigences fonctionnelles et techniques du cahier des charges. Elle s’intègre de manière souple dans plusieurs gammes de produits, est facilement configurable sur le terrain, et respecte les normes de sécurité et d’alimentation en vigueur. Le travail de conception a également démontré la capacité à produire en interne des solutions adaptables, économes en énergie et en coûts de production. Ce dossier constitue ainsi une base solide pour une future industrialisation ou un déploiement en série selon les retours des clients démonstrateurs.
+    </p>
+  </main>
+
+  <nav>
+    <a href="index.html">&larr; Retour à l'accueil</a>
+  </nav>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conception - Sous-partie 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 25px;
+      background: linear-gradient(to bottom, #f0f4f8, #dceeff);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #00707a;
+      font-size: 2em;
+      border-bottom: 3px solid #00707a;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    figure {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    nav a {
+      display: inline-block;
+      text-decoration: none;
+      background: #00707a;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #005f64;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul li::marker {
+      color: #00707a; /* Change la couleur des puces */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Conception - Prouver la pertinence de ses choix technologiques</h1>
+  </header>
+
+  <main>
+    <p>
+      Dans le cadre de ma troisième année d’alternance en BUT GEII, j’ai participé à la conception d’un banc d’essai destiné à simuler une décharge impulsionnelle de 600 V pendant 100 microsecondes. L’objectif était de tester la robustesse d’une carte d’alimentation développée en interne, conformément à la norme IEC 61000-4-5 catégorie 1, qui traite des perturbations électriques transitoires, notamment les effets de la foudre ou des surtensions.
+    </p>
+
+    <figure>
+      <img src="figure1-Schéma-Banc.jpg" alt="Photo du schéma du cicruit de puissance du banc d'essai" />
+      <figcaption>Figure 1 – Photo du schéma du cicruit de puissance du banc d'essai</figcaption>
+    </figure>
+
+    <p>
+      Le choix de réaliser ce banc en interne, plutôt que de le confier à un sous-traitant spécialisé, s’explique par la volonté de réduire les coûts et d’accélérer le processus de test. Le projet m’a été présenté lors d’une réunion, avec un cahier des charges précis. Celui-ci imposait un schéma de principe (présenté en figure 1) comprenant un convertisseur de tension de 12 V à 600 V, un condensateur de stockage, une résistance de décharge de 2 ohms et un transistor MOSFET assurant une décharge limitée à 100 µs dans la carte à tester. Ma mission consistait à sélectionner les composants adaptés à cette architecture, tout en justifiant leur pertinence technique et économique.
+    </p>
+
+    <p>
+      La tension d’entrée étant limitée à 15 V (à cause des générateurs disponibles en entreprise), j’ai choisi le convertisseur FS10-12, capable d’élever cette tension jusqu’à 600 V avec un gain de 100. Sa tension de sortie est comprise entre 200 V et 1000 V, ce qui respecte la plage requise. Son courant de sortie étant limité à 10 mA, j’ai intégré une résistance de charge de 68 kΩ pour limiter le courant en entrée du condensateur, générant une dissipation de 5,3 W. Le composant choisi, la résistance ROX7J68K, peut dissiper jusqu’à 7 W, avec une tolérance de 5 %, ce qui rend ce choix sûr et conforme.
+    </p>
+
+    <p>
+      Le condensateur devait quant à lui maintenir 600 V pendant les 100 µs de décharge, tout en supportant un courant de 300 A. Le calcul de la capacité minimale nécessaire (C ≥ (2 × t × I)/V) donne une valeur d’au moins 100 µF. J’ai retenu le modèle C44UOGQ6600F8SK, offrant 600 µF, supportant jusqu’à 900 V, avec une ESR très faible (2,2 mΩ), et un courant crête admissible de 4200 A. Ce choix garantit la stabilité de la tension pendant toute la durée de la décharge.
+    </p>
+
+    <p>
+      Pour la résistance de décharge de 2 ohms, qui subit une puissance instantanée de 180 kW pendant 100 µs (soit une énergie de 18 J), j’ai opté pour la résistance THS502R0J, capable de dissiper jusqu’à 135 J. Cela permet d’absorber le pic d’énergie sans risque de destruction.
+    </p>
+
+    <figure>
+      <img src="figure2-Courbe-datasheet-MOSFET.jpg" alt="Schémas tirés de la datasheet du transistor MOSFET IMW65R007M2HXKSA1" />
+      <figcaption>Figure 2 – Schémas tirés de la datasheet du transistor MOSFET IMW65R007M2HXKSA1  </figcaption>
+    </figure>
+
+    <p>
+      Le transistor MOSFET devait assurer une conduction de 300 A pendant exactement 100 µs, tout en supportant une tension bloquée de 600 V. J’ai sélectionné le IMW65R007M2HXKSA1, un transistor canal N supportant un Vds de 700 V et un courant pulsé (Idpulse) jusqu’à 886 A, avec une vitesse de commutation de 1300 A/µs. Pour valider son utilisation, je me suis appuyé sur les courbes présentes dans la figure 2, issues de sa datasheet. Ces courbes permettent de justifier le choix d’un Vgs de 12 V pour atteindre un courant de 300 A et de vérifier, via l’analyse de la zone SOA (Safe Operating Area), que la combinaison d’un Vds de 9 V et de 300 A pendant 100 µs reste dans les limites de fonctionnement sûres du transistor. La courbe montre également que la limite absolue à ne pas dépasser à 9 V de Vds est d’environ 600 A, ce qui confirme que notre usage est bien en dessous du seuil critique.
+    </p>
+
+    <p>
+      La conséquence de cette chute de tension Vds (9 V) est une diminution de la tension disponible aux bornes de la résistance de décharge, qui passe ainsi à 591 V, ce qui génère un courant de 295,5 A, restant dans la plage acceptable.
+    </p>
+
+    <p>
+      Enfin, pour piloter le transistor sur une durée précise de 100 µs avec une tension de commande de 12 V, j’ai utilisé un circuit NE555P en mode bistable. Ce composant est alimenté en 12 V, et sa sortie délivre une tension proche de 11,5 V, suffisante pour saturer le MOSFET. En suivant les recommandations de la datasheet, j’ai configuré les composants associés (résistances et condensateurs) pour générer l’impulsion voulue. Le NE555 est commandé par un microcontrôleur alimenté en 5 V, avec une fréquence d’horloge d’au moins 1 MHz, ce qui garantit une réactivité suffisante pour respecter la fenêtre temporelle étroite imposée.
+    </p>
+
+    <p>
+      Pour valider l’ensemble des choix technologiques, j’ai modélisé et simulé le circuit sous LTspice. Ces simulations ont permis de confirmer les résultats théoriques, de visualiser certains effets parasites et de détecter de potentielles dérives en conditions réelles. Le document technique que j’ai rédigé a ensuite été présenté à mes responsables, afin de leur démontrer l’adéquation entre les composants sélectionnés, le cahier des charges, les normes applicables, et les contraintes de coût et de faisabilité. Ce travail a également permis de prendre conscience des écarts inévitables entre les performances idéales et les limitations réelles dues à la disponibilité des composants ou aux compromis technologiques dans le domaine exigeant de la haute puissance à temps de commutation très court.
+    </p>
+  </main>
+
+  <nav>
+    <a href="index.html">&larr; Retour à l'accueil</a>
+  </nav>
+
+</body>
+</html>

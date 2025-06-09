@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Installation - Sous-partie 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 25px;
+      background: linear-gradient(to bottom, #f0f4f8, #dceeff);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #00707a;
+      font-size: 2em;
+      border-bottom: 3px solid #00707a;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    figure {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    nav a {
+      display: inline-block;
+      text-decoration: none;
+      background: #00707a;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #005f64;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul li::marker {
+      color: #00707a; /* Change la couleur des puces */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Installation - Produire le dossier de conformité du système en gérant le versionnage</h1>
+  </header>
+
+  <main>
+    <p>
+      Dans le cadre du développement d’une nouvelle gamme de PC industriels, nommée Héraclès, proche de l’ancienne gamme Odyssée, j’ai été chargé de produire le dossier de conformité du système intégrant une nouvelle carte mère : la GENE-ADN6 de chez AAEON. Ce travail s’inscrit dans un processus rigoureux de validation matériel, essentiel pour garantir la conformité aux attentes du cahier des charges, à la maintenabilité, aux normes en vigueur, ainsi qu’au respect des coûts. Cette mission implique également la gestion du versionnage, indispensable pour tracer les évolutions matérielles et logicielles au fil des tests.
+    </p>
+
+    <p>
+      L’ensemble de cette activité a été réalisé dans le contexte d’un système embarqué sur panel PC, où la compatibilité matérielle, les performances, la fiabilité thermique, la connectique et la consommation énergétique sont des critères fondamentaux.
+    </p>
+
+    <p><strong>
+      Phase de préparation et configuration de test
+    </strong></p>
+
+    <p>
+      Avant de débuter les essais, j’ai rempli un document de conformité matériel répertoriant l’ensemble des éléments à tester, à commencer par l’identification de la carte (GENE-ADN6), la gamme visée (Héraclès), ainsi que les systèmes d’exploitation cibles : Windows 11 IoT, Windows 11 pro, Windows 10 IoT, Ubuntu et Debian. Toutefois, les tests ont été conduits uniquement sous Windows 11 IoT, selon les priorités du projet.
+    </p>
+
+    <p>
+      La configuration utilisée pour les tests comprenait :
+    </p>
+
+    <ul>
+      <li>un écran LVDS 21,5 pouces G215HVN01.3,</li>
+      <li>un contrôleur LED référencé en interne,</li>
+      <li>un SSD TS256GSSD450K de 256 Go,</li>
+      <li>16 Go de RAM, valeur maximale supportée par la carte,</li>
+      <li>une dalle tactile USB,</li>
+      <li>un module Wi-Fi M.2 Intel Wi-Fi 7 BE200.</li>
+    </ul>
+
+    <p>
+      Chaque test documente précisément les informations de version du BIOS, le système d’exploitation, la version de la carte et le matériel connecté, garantissant une traçabilité complète indispensable dans le cadre du versionnage.
+    </p>
+
+    <p><strong>
+      Tests d’endurance et de performance
+    </strong></p>
+
+    <p>
+      Le premier volet de la campagne de validation concerne les tests d’endurance. La carte a été soumise à une charge continue de 24 heures avec les logiciels BurninTest V10.2 et Prime95 v30 build 20, afin d’évaluer sa stabilité dans des conditions normales d’utilisation (température ambiante de 24°C). Aucun incident n’a été relevé, la carte a tenu la durée sans erreur ni crash.
+    </p>
+
+    <p>
+      Les performances ont été mesurées via PerformanceTest V11.2, la même version que celle utilisée par le fabricant. Les résultats pour le CPU, la RAM, le disque et la 3D sont similaires à ceux du constructeur. Un écart notable a été observé pour le score 2D, supérieur au double du score annoncé, sans explication immédiate. Ce décalage a été documenté dans le dossier, bien que le test ait été validé positivement.
+    </p>
+
+    <p>
+      Avec CPU-Z v2.15, j’ai ensuite vérifié que la RAM était correctement détectée, installée sur le bon slot, et que ses fréquences et son cache étaient conformes à la fiche technique.
+    </p>
+
+    <p><strong>
+      Validation de l'affichage et des interfaces
+    </strong></p>
+
+    <p>
+      Le test de la sortie LVDS a été réalisé avec HWMonitor v1.58 et un affichage de type printer test qui permet de déterminer la qualité de la dalle. Comme attendu, la visibilité allait jusqu’au niveau 18, sans pixel mort ni défaut d’affichage.
+    </p>
+
+    <p>
+      Les interfaces PCIe et M.2 ont ensuite été testées. J’ai installé le module Wi-Fi Intel BE200, accompagné de deux antennes Molex. Après installation des pilotes via Windows Update, j’ai lancé trois tests de débit sur les bandes 2.4 GHz, 5 GHz et 6 GHz. Tous les résultats dépassaient les 30 Mo/s, critère défini par le SAV pour validation. Le Bluetooth a été vérifié en utilisant des écouteurs sans fil, dont le bon fonctionnement a été confirmé à 5 mètres de distance.
+    </p>
+
+    <p>
+      Un SSD mSATA Transcend 230s a été utilisé pour valider le port mSATA. Une fois détecté dans l’explorateur Windows, des mesures de débit ont été effectuées via CrystalDiskMark 8.0.6.
+    </p>
+
+    <p><strong>
+      Test thermique en étuve
+    </strong></p>
+
+    <p>
+      L’un des tests les plus critiques a été la validation du comportement thermique de la carte. La GENE-ADN6 a été placée dans une étuve réglée à 70°C, température maximale d’utilisation définie par le fabricant. Elle reposait sur des colonnettes de 40 mm pour éviter tout contact direct entre le radiateur et le support. Un anémomètre a été fixé afin de s’assurer que le flux d’air ne dépasse pas 0,5 m/s, conformément aux exigences industrielles.
+    </p>
+
+    <figure>
+      <img src="figure1-Photo-AAEON-Etuve.jpg" alt="Photo de la carte GENE-ADN6 en test thermique dans l’étuve" />
+      <figcaption>Figure 1 – Photo de la carte GENE-ADN6 en test thermique dans l’étuve</figcaption>
+    </figure>
+
+    <p>
+      Le test a été conduit pendant trois heures avec BurninTest configuré pour solliciter 50 % du CPU, de la charge graphique : 2D et 3D, 100 % de la RAM, 70 % du disque. Aucun dysfonctionnement n’a été relevé à l’issue de cette phase, validant la conformité thermique.
+    </p>
+
+    <p><strong>
+      Test de connectique et validation système
+    </strong></p>
+
+    <p>
+      J’ai ensuite réalisé un test complet de la connectique, en sollicitant tous les ports de la carte simultanément. L’affichage a été activé sur les sorties HDMI, VGA et LVDS. Des claviers et souris ont été connectés aux ports USB, des bouchons placés sur les ports COM, et les trois ports Ethernet reliés à un switch.
+    </p>
+
+    <figure>
+      <img src="figure2-Test-connectique-AAEON.jpg" alt="Configuration complète de test de la connectique de la carte GENE-ADN6" />
+      <figcaption>Figure 2 – Configuration complète de test de la connectique de la carte GENE-ADN6</figcaption>
+    </figure>
+
+    <p>
+      Un testeur USB a permis de simuler un trafic de données à 5 GHz, tandis qu’un second PC servait à échanger des paquets via PING. BurninTest a ensuite été lancé avec une sollicitation à 100 % des ressources (CPU, RAM, 2D, GPGPU, disque, ports série, Ethernet, USB). Après deux heures d’activité, tous les périphériques restaient fonctionnels, validant le test.
+    </p>
+
+    <p><strong>
+      Tests d’alimentation et sortie de veille
+    </strong></p>
+
+    <p>
+      La consommation énergétique a été mesurée dans trois états : en veille, en activité normale, et en stress. Les résultats donnent une estimation annuelle de 52 kWh, bien en deçà de la limite européenne fixée à 150 kWh par le règlement (UE) No 617/2013. En revanche, la consommation en veille a été mesurée à 3,12W, alors que la norme impose moins de 1W. Ce point a été documenté comme non conforme, en attente de validation par les responsables du bureau d'études.
+    </p>
+
+    <p>
+      Enfin, le test de sortie de veille via périphériques (clavier, souris, dalle tactile) n’a pas pu être validé : la carte n’alimentant plus ses ports USB en veille, aucun réveil n’était possible. J’ai alors sollicité le fabricant, qui a fourni une nouvelle version du BIOS. Cette mise à jour a été documentée dans le dossier, et a déclenché une nouvelle série de tests pour valider le bon fonctionnement de la carte sous cette nouvelle configuration.
+    </p>
+
+    <p><strong>
+      Gestion du versionnage et analyse finale
+    </strong></p>
+
+    <p>
+      L’ensemble des tests et des résultats ont été consignés dans un dossier de conformité versionné, intégrant à la fois les observations liées à la version initiale de la carte, et celles obtenues avec le BIOS mis à jour. Cela permet une gestion claire des évolutions, indispensable en phase de développement matériel.
+    </p>
+
+    <p>
+      Une analyse SWOT a également été menée :
+    </p>
+
+    <ul>
+      <li>Forces : très bonne stabilité, compatibilité large, robustesse thermique.</li>
+      <li>Faiblesses : consommation en veille non conforme, sortie de veille USB défaillante avant mise à jour.</li>
+      <li>Opportunités : BIOS évolutif, gamme Héraclès en croissance.</li>
+      <li>Menaces : dépendance aux mises à jour du fabricant, contraintes réglementaires.</li>
+    </ul>
+
+    <p>
+      Cette mission a permis de démontrer l’importance d’une approche rigoureuse dans la validation matérielle, en lien avec le développement produit. La traçabilité, la documentation et la gestion du versionnage sont des éléments essentiels pour garantir la qualité des produits livrés par IPO Technologie.
+    </p>    
+  </main>
+
+  <nav>
+    <a href="index.html">&larr; Retour à l'accueil</a>
+  </nav>
+
+</body>
+</html>

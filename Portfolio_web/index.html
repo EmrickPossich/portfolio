@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mon Portfolio</title>
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(120deg, #e0f7fa, #f1f8f9);
+        color: #333;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 30px 20px;
+    }
+
+    header {
+        text-align: center;
+        background: white;
+        padding: 30px 20px;
+        border-radius: 16px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    header img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #0a9396;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+        margin-top: 15px;
+        font-weight: 700;
+        color: #0a9396;
+    }
+
+    header p {
+        max-width: 600px;
+        margin: 10px auto 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+
+    .boutons-liens {
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        background: #0a9396;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        font-weight: bold;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+        background: #005f73;
+    }
+
+    .menu-grille {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .ac {
+        background: white;
+        padding: 20px;
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.2s ease;
+    }
+
+    .ac:hover {
+        transform: translateY(-5px);
+    }
+
+    .ac h2 {
+        margin-bottom: 12px;
+        color: #0a9396;
+    }
+
+    .ac a {
+        display: block;
+        margin: 6px 0;
+        padding: 8px;
+        background: #94d2bd;
+        text-decoration: none;
+        color: #001219;
+        font-weight: 600;
+        border-radius: 6px;
+        transition: background 0.3s ease;
+    }
+
+    .ac a:hover {
+        background: #ee9b00;
+        color: white;
+    }
+
+    @media (max-width: 600px) {
+        .ac {
+        padding: 15px;
+        }
+    }
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <header>
+        <img src="photo.jpg" alt="Ma photo" />
+        <h1>Emrick Possich</h1>
+        <p>
+        Voici une courte description de moi, mes compétences, et ce que j'aime apprendre dans le domaine technique.
+        </p>
+        <div class="boutons-liens">
+        <a href="CV.html" class="btn">📄 Voir mon CV</a>
+        <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" class="btn" target="_blank">🔗 LinkedIn</a>
+        </div>
+    </header>
+
+    <section class="menu-grille">
+        <div class="ac">
+            <h2>Conception</h2>
+            <a href="conception-souspartie1.html">Prouver la pertinence de ses choix technologiques</a>
+            <a href="conception-souspartie2.html">Rédiger un dossier de conception</a>
+        </div>
+        <div class="ac">
+            <h2>Essai</h2>
+            <a href="essai-souspartie1.html">Evaluer la cause racine d'un dysfonctionnement</a>
+            <a href="essai-souspartie2.html">Proposer une solution corrective à un dysfonctionnement</a>
+            <a href="essai-souspartie3.html">Produire une procédure d’essai pour valider la conformité d’un système</a>
+        </div>
+        <div class="ac">
+            <h2>Dépannage</h2>
+            <a href="depannage-souspartie1.html">Produire une procédure de maintenance</a>
+        </div>
+        <div class="ac">
+            <h2>Installation</h2>
+            <a href="installation-souspartie1.html">Produire une procédure d'installation et de mise en service d'un système</a>
+            <a href="installation-souspartie2.html">Produire le dossier de conformité du système en gérant le versionnage</a>
+        </div>
+    </div>  
+</body>
+</html>

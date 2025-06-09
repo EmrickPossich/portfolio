@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Essai - Sous-partie 3</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 25px;
+      background: linear-gradient(to bottom, #f0f4f8, #dceeff);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #00707a;
+      font-size: 2em;
+      border-bottom: 3px solid #00707a;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    figure {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    nav a {
+      display: inline-block;
+      text-decoration: none;
+      background: #00707a;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #005f64;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul li::marker {
+      color: #00707a; /* Change la couleur des puces */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Essai - Produire une procédure d'essai pour valider la conformité d'un système</h1>
+  </header>
+
+  <main>
+    <p>
+      Dans le cadre de mon alternance au sein de l’entreprise IPO Technologie, j’ai été confronté à une problématique technique émise par un client majeur, la société Andros. Ce dernier utilise dans son environnement industriel un panel PC inoxydable de la gamme ODYSSEE21CIC, conçu pour fonctionner dans des conditions exigeantes, notamment dans l’agroalimentaire. Ce modèle intègre un écran de 21 pouces et peut être nettoyé à l’aide d’un jet haute pression. Cependant, un dysfonctionnement aléatoire est apparu : lors de l’utilisation, l’image à l’écran se figeait brièvement. Ce défaut étant difficile à reproduire en continu, il a été décidé de ne pas rapatrier immédiatement le matériel en atelier, mais plutôt de conduire une série de tests à distance afin de comprendre l’origine du problème.
+    </p>
+
+    <p>
+      L’objectif de ma mission était donc de concevoir une procédure d’essai fiable et reproductible, permettant de valider le bon fonctionnement ou non du système, en comparant les résultats obtenus avec ceux d’un panel parfaitement opérationnel. Cette procédure devait également pouvoir être utilisée par d’autres opérateurs, tout en assurant la rigueur et la traçabilité attendues dans un contexte professionnel.
+    </p>
+
+    <p>
+      Pour établir une base de référence fiable, j’ai commencé par sélectionner un modèle identique (ODYSSEE21CIC en stock IMMO), disponible en interne et destiné à des démonstrations ou à des tests. Ce panel a été installé dans le laboratoire, dans des conditions standard, à température ambiante d’environ 21°C. Plusieurs logiciels spécialisés ont alors été utilisés pour mesurer les performances et les comportements thermiques du système : PerformanceTest V11 a permis de générer un score global pour le processeur, les capacités graphiques (2D/3D), la mémoire vive et le disque SSD ; le logiciel Scope Pro v4.13 (Transcend) a quant à lui mesuré les vitesses de lecture et d’écriture du disque SSD en condition stable (état IDLE, à température basse) ; enfin, un stress test a été conduit via BurnInTest V10.2, mobilisant l’ensemble des ressources matérielles pendant 10 minutes à pleine charge. Pour compléter cette analyse, j’ai utilisé HWMonitor V1.54 afin de relever les températures des cœurs CPU, de la SSD et la puissance électrique consommée.
+    </p>
+
+    <p>
+      Une fois les valeurs de référence obtenues, j’ai procédé à une répétition des tests, mais cette fois à distance, en contrôlant le panel via le logiciel TeamViewer installé sur le PC local et sur l’appareil testé. L’objectif de cette étape était de s’assurer que les performances mesurées à distance restaient représentatives de celles constatées localement, malgré la couche logicielle de prise en main à distance. Les résultats ont montré des écarts mineurs, notamment une température SSD légèrement plus élevée à distance, mais des scores de performance relativement proches, comme on peut le voir sur le tableau de comparaison des résultats de la figure 1.
+    </p>
+
+    <figure>
+      <img src="figure1-Tableau-comparaison.jpg" alt="Comparaison des valeurs relevées en local et à distance du performance Test" />
+      <figcaption>Figure 1 – Tableau de comparaison des valeurs relevées en local et à distance du performance Test</figcaption>
+    </figure>
+
+    <p>
+      Cette analyse comparative m’a permis de valider la fiabilité d’un test de conformité effectué à distance, tout en tenant compte des légers écarts que cette configuration pouvait engendrer.
+    </p>
+
+    <p>
+      À l’issue de cette phase d’expérimentation, j’ai élaboré une procédure de test complète, claire et structurée, destinée à être utilisée en interne. Elle débute par un titre explicite : « Opération test ODYSSEE21WCICTP à distance », suivi d’un rappel de l’objectif et du contexte du test. J’y ai listé tous les logiciels utilisés, accompagnés de leur version exacte, afin de garantir une parfaite reproductibilité des résultats. Chaque partie de la procédure est détaillée : la configuration des outils, les étapes de test à suivre, la justification de chaque mesure, ainsi que les résultats attendus. L’ensemble est conçu pour permettre à un autre opérateur, même non initié au contexte initial, de comprendre et d’exécuter la démarche.
+    </p>
+
+    <p>
+      Une section est consacrée à la transmission des logiciels au client. Il est en effet essentiel de fournir les installeurs exacts, pour éviter toute confusion liée à des versions différentes. J’ai également décrit précisément la procédure de connexion à distance via TeamViewer, tant du côté client (fourniture de l’identifiant et du mot de passe temporaire) que du côté opérateur, afin de faciliter la prise de contrôle.
+    </p>
+
+    <p>
+      Enfin, la procédure se conclut par une phase de test à distance, dans laquelle l’opérateur doit reproduire exactement les tests réalisés en laboratoire, comparer les résultats, identifier les éventuels écarts, et poser un diagnostic sur l’origine du problème. Afin de garantir l’exhaustivité de l’intervention, j’ai mis en place une check-list finale (figure 2), véritable outil de vérification, à la fin du rapport.
+    </p>
+
+    <figure>
+      <img src="figure2-Check-list.jpg" alt="Check-list" />
+      <figcaption>Figure 2 – Check-list des procédures à vérifier ppoint par point à la fin de la procédure de test</figcaption>
+    </figure>
+
+    <p>
+      Cette procédure a été conservée en interne. Elle n’a malheureusement pas pu être mise en œuvre, faute de réponse du client à nos sollicitations par mail. Toutefois, elle constitue désormais une base solide et immédiatement exploitable pour toute future intervention de test à distance, notamment sur cette gamme de produits.
+    </p>
+  </main>
+
+  <nav>
+    <a href="index.html">&larr; Retour à l'accueil</a>
+  </nav>
+
+</body>
+</html>

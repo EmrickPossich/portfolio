@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Essai - Sous-partie 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 25px;
+      background: linear-gradient(to bottom, #f0f4f8, #dceeff);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #00707a;
+      font-size: 2em;
+      border-bottom: 3px solid #00707a;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    figure {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    nav a {
+      display: inline-block;
+      text-decoration: none;
+      background: #00707a;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #005f64;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul li::marker {
+      color: #00707a; /* Change la couleur des puces */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Essai - Proposer une solution corrective à un dysfonctionnement</h1>
+  </header>
+
+  <main>
+    <p>
+      Lors de la mise en service de la carte électronique, un dysfonctionnement a été constaté au niveau du capteur de détection de présence. Celui-ci ne réagissait pas comme attendu malgré un montage conforme en apparence. En effet, le capteur est censé délivrer une tension de 0 V lorsqu'aucune présence n'est détectée, et 3,3 V lorsqu’un mouvement est perçu. Or, lors des tests, aucune variation de signal n’était détectée, ce qui bloquait l’interprétation des données côté microcontrôleur. Ce dysfonctionnement empêchait la validation de la chaîne complète de détection, et retardait directement les phases de développement logiciel et de test système.
+    </p>
+
+    <p>
+      L'analyse approfondie du montage et de l’implantation physique a permis d’identifier la cause de l'erreur : il s'agissait d’une inversion entre les broches d’alimentation VCC et GND du capteur. Cette erreur provenait directement de la conception de la carte. Pour passer le capteur de la face avant à la face arrière de la carte, j’avais choisi de retourner son empreinte de 180°, pensant ajuster simplement son orientation. Cependant, cette rotation a conduit à une inversion des pins d’alimentation, car elle n’a pas respecté la disposition verticale initiale du brochage. Résultat : le capteur recevait une alimentation inversée, ce qui l’empêchait de fonctionner et risquait potentiellement de l’endommager.
+    </p>
+
+    <figure>
+      <img src="figure1-Schéma-corrigé-cablage.jpg" alt="Schéma de câblage corrigé du capteur de présence" />
+      <figcaption>Figure 1 – Schéma de câblage corrigé du capteur de présence</figcaption>
+    </figure>
+
+    <p>
+      Un schéma électrique simplifié montrant la position réelle des broches du capteur après correction, avec les fils de masse et d’alimentation croisés, et la broche signal soudée directement sur la carte. Cela illustre clairement la modification et permet de comprendre le type d'intervention réalisé.
+    </p>
+
+    <p>
+      Face à cette erreur de conception, plusieurs solutions étaient envisageables. La première consistait à revoir entièrement la conception de la carte, en corrigeant l’orientation de l’empreinte du capteur pour rétablir le bon sens des connexions. Cette approche, bien que techniquement la plus propre, impliquait de modifier le routage, de relancer la fabrication d’un nouveau PCB et d’attendre son approvisionnement, ce qui aurait pris plusieurs semaines. Or, le projet était soumis à un calendrier très contraint, et cette option aurait entraîné des retards importants et des surcoûts non négligeables. Sur le plan économique, cela représentait une dépense additionnelle difficilement justifiable à ce stade du développement. Sur le plan environnemental, relancer une production de carte pour une erreur localisée sur un seul composant générait un gaspillage de ressources (matériaux, énergie, transport) non cohérent avec les bonnes pratiques d’éco-conception. Enfin, du point de vue réglementaire, la carte était encore en phase de prototypage, ce qui autorisait une modification manuelle tant que le produit final serait conforme.
+    </p>
+
+    <p>
+      Dans ce contexte, j’ai choisi une solution corrective plus immédiate et pragmatique : intervenir directement sur le prototype en modifiant le câblage des broches du capteur. J’ai dessoudé le connecteur fautif et repositionné les fils de façon manuelle, en croisant les connexions d’alimentation pour respecter le brochage correct du capteur. La broche centrale, correspondant au signal de sortie du capteur, a toutefois pu être conservée et soudée directement sur la carte. Cela a permis de maintenir une fixation mécanique fiable, garantissant un bon maintien du capteur sur la carte elle-même. Afin de respecter les contraintes mécaniques d’intégration dans le boîtier final, et notamment de limiter au maximum l’épaisseur du montage, des fils de très faible section ont été utilisés pour réaliser les connexions du VCC et de la masse. Ces fils ont été soudés de manière à épouser au plus près la surface du PCB, permettant ainsi au capteur d’être positionné au plus près de la face extérieure de la carte. Cette adaptation minutieuse a permis de respecter les contraintes d’encombrement tout en garantissant la fonctionnalité du système.
+    </p>
+
+    <figure>
+      <img src="figure2-Photo-Correction-capteur.jpg" alt="Photo du capteur sur la PCB après correction" />
+      <figcaption>Figure 2 – Photo du capteur sur la PCB après correction</figcaption>
+    </figure>
+
+    <p>
+      Une photo du capteur réellement modifié sur la carte, montrant le câblage manuel réalisé avec des fils fins, et l’intégration physique du capteur au plus proche du PCB. Cela mettrait en valeur l’adaptation physique à l’environnement du boîtier, et concrétise visuellement la solution mise en œuvre.
+    </p>
+
+    <p>
+      Cette opération a permis de corriger l’erreur sans modifier le reste du circuit, tout en assurant la fiabilité du fonctionnement. Le capteur s’est alors comporté comme attendu, et le développement logiciel a pu reprendre normalement.
+    </p>
+
+    <p>
+      Cette solution, bien qu’artisanale, répondait pleinement aux contraintes du projet. Elle a permis de maîtriser les coûts, d’éviter un impact environnemental lié à une nouvelle fabrication, et de respecter le calendrier de livraison. En revanche, elle met en lumière la nécessité d’adopter une plus grande rigueur dans la vérification des empreintes de composants, notamment lors de changements de face ou d’orientation. Pour l’avenir, l’intégration d’un contrôle croisé systématique entre schéma, empreinte et datasheet permettra de limiter ce type d’erreur. De plus, l’ajout de vues 3D dans l’outil de conception pourrait aider à mieux anticiper l’implantation réelle des composants dans l’espace.
+    </p>
+
+    <p>
+      En somme, cette intervention m’a permis de proposer une solution corrective adaptée à une erreur de conception, en tenant compte des enjeux techniques, économiques, environnementaux et temporels du projet. Elle m’a également permis de renforcer mes compétences en diagnostic de panne et en correction rapide sur prototype, deux savoir-faire essentiels en environnement industriel.
+    </p>
+  </main>
+
+  <nav>
+    <a href="index.html">&larr; Retour à l'accueil</a>
+  </nav>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Essai - Sous-partie 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 25px;
+      background: linear-gradient(to bottom, #f0f4f8, #dceeff);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #00707a;
+      font-size: 2em;
+      border-bottom: 3px solid #00707a;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    figure {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    nav a {
+      display: inline-block;
+      text-decoration: none;
+      background: #00707a;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #005f64;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul li::marker {
+      color: #00707a; /* Change la couleur des puces */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Essai - Evaluer la cause racine d’un dysfonctionnement</h1>
+  </header>
+
+  <main>
+    <p>
+      Dans le cadre de mon alternance en BUT GEII, j’ai été sollicité pour analyser un dysfonctionnement critique observé sur une toute nouvelle gamme de produits, le PAC6. Ce boîtier, composé d’une carte CPU capable de faire fonctionner des systèmes d’exploitation comme Windows et d’une carte dotée de slots BUS passifs pour l’ajout de modules, venait d’être produit pour la première fois dans le cadre d’une commande de 13 unités. Le problème a été détecté au moment du test final, alors que le produit semblait initialement fonctionnel
+    </p>
+
+    <p>
+      Le bug rencontré était le suivant : lors d’un redémarrage de Windows, le système pouvait se bloquer totalement, rendant nécessaire un redémarrage manuel du boîtier. Ce comportement erratique posait un risque majeur en termes de fiabilité. David Ouattara m’a confié la mission de mener des tests pour identifier la cause racine du dysfonctionnement.
+    </p>
+
+    <p>
+      Des premiers éléments d’enquête m’ont été fournis : le bug apparaissait de manière aléatoire lorsque le clavier était connecté, uniquement sur le site de test final à rue Émile Zola, et non sur le site de Bruyères où se situe mon laboratoire. J’ai donc choisi de me rendre directement à Zola afin d'observer le phénomène dans ses conditions réelles d’apparition. J’y ai conçu un plan de test structuré, en variant les périphériques (deux claviers, deux souris) et les conditions de test (paillasses différentes, sources d’alimentation variées). Chaque configuration était soumise à 50 redémarrages si aucun bug ne survenait.
+    </p>
+
+    <p>
+      Les résultats ont rapidement mis en évidence que ni la paillasse, ni la référence du clavier, ni le réseau électrique ne semblaient avoir d’impact significatif. Le bug survenait de façon similaire, quel que soit le clavier, souvent en moins de 10 redémarrages. J’ai même observé des cas où le simple branchement d’un clavier déclenchait le problème. Cela m’a conduit à suspecter une influence des périphériques USB sur les charges ou la communication.
+    </p>
+
+    <p>
+      Pour écarter l’hypothèse d’un lien avec le site, j’ai refait exactement les mêmes tests à Bruyères, en reprenant tous les éléments (claviers, souris, alimentation, écran) de Zola. Le bug est réapparu, confirmant que le lieu n'était pas en cause. J’ai ensuite procédé à des tests avec des charges USB simulées, pour maximiser la consommation sur les ports, mais aucun dysfonctionnement n’est apparu, ce qui a permis d’écarter l’hypothèse d’un problème lié à l’intensité.
+    </p>
+
+    <figure>
+      <img src="figure1-PAC6-Test-Combi.jpg" alt="Tableau Excel d'une série de test sur le PAC6" />
+      <figcaption>Figure 1 – Tableau Excel d'une série de test sur le PAC6</figcaption>
+    </figure>
+
+    <p>
+      J’ai alors entrepris une campagne de tests combinatoires poussée, pour identifier les éléments déclencheurs précis. La figure 1 illustre ces tests : j’ai testé les différentes combinaisons de périphériques (clavier seul, souris seule, les deux, aucun), de blocs d’alimentation, de câbles HDMI et d’écrans. Chaque scénario était soumis à 50 redémarrages. Les résultats ont révélé que le bug dépendait uniquement de la référence d’écran et de la présence de périphériques USB. Lorsque l’écran de référence 2 était utilisé ou qu’aucun périphérique n’était connecté, le bug n’apparaissait jamais.
+    </p>
+
+    <p>
+      Cette découverte a permis de cibler la carte CPU comme unique composant susceptible d’être responsable du dysfonctionnement, celle-ci étant la seule variable constante, fabriquée par un fournisseur externe. Malheureusement, je n’avais pas accès à d’autres exemplaires de cette carte pour valider s’il s’agissait d’un défaut de fabrication ou de conception.
+    </p>
+
+    <figure>
+      <img src="figure2-Test-Ecran-PAC6.jpg" alt="Tableau des tests d'identifications d'écran fonctionnel" />
+      <figcaption><div style="text-align:center; margin:20px 0;"> <strong>Figure 2 – Tableau des tests d'identification d'écran fonctionnel</strong><br> <em>pour chaque écran plus de 50 redémarrages ont été faits et deux ports USB sont utilisés.</em> </div> </figcaption>
+    </figure>
+
+    <p>
+      Pour finaliser le diagnostic, j’ai établi une dernière série de tests basée sur un large échantillon d’écrans connectés en HDMI, dans la configuration la plus sujette au bug (clavier 1 + souris 1). La figure 2 présente les résultats : certains écrans provoquent le bug systématiquement, d’autres jamais. J’ai également testé un adaptateur HDMI-VGA (aucun bug) et un amplificateur HDMI (bug réapparu), ce qui renforce l’idée que la communication via HDMI joue un rôle critique dans l'apparition du problème.
+    </p>
+
+    <p>
+      Grâce à l’ensemble de ces tests, j’ai pu localiser précisément les conditions d’apparition du bug, en excluant systématiquement les causes non pertinentes. Même si une correction technique n’était pas réalisable dans l’immédiat, mon travail a permis à David Ouattara de prévenir le client du risque potentiel selon le type d’écran utilisé. Il servira également de base de test pour les 12 autres boîtiers PAC6, afin de vérifier si le dysfonctionnement est récurrent ou isolé.
+    </p>
+  </main>
+
+  <nav>
+    <a href="index.html">&larr; Retour à l'accueil</a>
+  </nav>
+
+</body>
+</html>

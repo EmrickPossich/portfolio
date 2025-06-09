@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Installation - Sous-partie 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 25px;
+      background: linear-gradient(to bottom, #f0f4f8, #dceeff);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      color: #00707a;
+      font-size: 2em;
+      border-bottom: 3px solid #00707a;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    figure {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    nav a {
+      display: inline-block;
+      text-decoration: none;
+      background: #00707a;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #005f64;
+    }
+
+    ul, ol {
+      margin-left: 30px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul li::marker {
+      color: #00707a; /* Change la couleur des puces */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Installation - Produire une procédure d’installation et de mise en service d’un système </h1>
+  </header>
+
+  <main>
+    <p><strong>
+      Contexte de la mission
+    </strong></p>
+
+    <p>
+      Dans le cadre de mon alternance au sein du bureau d’études d’IPO Technologie, j’ai été amené à participer à la mise en service d’un système de génération d’impulsions haute tension destiné à la validation de cartes d’alimentation. Ce générateur délivre une impulsion de 100 µs pouvant atteindre 600V, à l’aide d’un microcontrôleur, d’un circuit NE555P, et d’un transistor de puissance. Ma mission a consisté à rédiger la documentation complète d’installation, de mise en service et d’utilisation du système, en prenant en compte les aspects techniques, sécuritaires et linguistiques. L’objectif était de fournir un support accessible au technicien de l’entreprise, et de proposer également une version simplifiée pour une présentation orale efficace.
+    </p>
+
+    <p><strong>
+      Procédure d’installation et de mise en service
+    </strong></p>
+
+    <p>
+      Avant toute manipulation, il est indispensable d’identifier précisément les ressources nécessaires. Sur le plan matériel, le système nécessite un boîtier générateur d’impulsions intégrant les composants de commande et de puissance, un oscilloscope équipé d’une entrée BNC, trois alimentations distinctes (2V à 5.4V, 12.5VDC, et 5VDC), un câble BNC et d’une carte d’alimentation intégrant un système de protection contre une surtension (la partie que test mon banc d’essai). Sur le plan humain, un technicien ou un ingénieur en électronique est requis. Ce dernier devra posséder des compétences solides en électronique analogique et numérique, ainsi qu’une bonne maîtrise de l’oscilloscope. Une habilitation électrique de type B1V est recommandée pour garantir la sécurité lors des interventions sur un système à haute tension.
+    </p>
+
+    <figure>
+      <img src="figure1-Photo-Face-Avant.jpg" alt="Photo de la face avant du boitier d'impulsion 600V, 100µs" />
+      <figcaption>Figure 1 – Photo de la face avant du boitier d'impulsion 600V, 100µs</figcaption>
+    </figure>
+
+    <p>
+      Figure 1 montre la façade du boîtier. On y distingue clairement les étiquettes d’identification des entrées, le bouton poussoir, la LED de signalisation, et la sortie BNC. Cette vue permet d’associer visuellement chaque composant à sa fonction, et sert également de repère pour l’utilisateur lors de la première utilisation.
+    </p>
+
+    <p>
+      La sécurité constitue un aspect essentiel de cette installation. Le boîtier est clairement étiqueté avec une mention « Attention haute tension » pour prévenir les risques liés à la présence de tensions élevées. Il est impératif de ne jamais manipuler le système sous tension, de s’assurer de l’isolation correcte de tous les câbles et de n’ouvrir le boîtier qu’en l’absence totale d’alimentation.
+    </p>
+
+    <figure>
+      <img src="figure2-Photo-Cablage-Banc.jpg" alt="Photo de cablage du banc d'essai, avec trois générateurs et un oscilloscope connecté" />
+      <figcaption>Figure 2 – Photo de cablage du banc d'essai, avec trois générateurs et un oscilloscope connecté</figcaption>
+    </figure>
+
+    <p>
+      Figure 2 présente le banc d’essai câblé, dans sa configuration complète. Elle permet de visualiser les connexions des alimentations, du câble BNC, des charges, ainsi que l’intégration de l’oscilloscope. Cette image facilite la compréhension du câblage requis pour la mise en service.
+    </p>
+
+    <p>
+      L’installation débute par le câblage des différentes alimentations. Il convient de connecter successivement l’alimentation 2V à 5.4V à l’entrée du convertisseur, l’alimentation 12.5VDC à son entrée dédiée, puis l’alimentation 5VDC à l’entrée +5VDC du boîtier. Une fois ces connexions effectuées, un câble BNC doit être branché entre la sortie « Vmesure » du boîtier et l’entrée de l’oscilloscope.
+    </p>
+
+    <p>
+      Le réglage de l’oscilloscope est ensuite nécessaire pour visualiser correctement l’impulsion. Le canal vertical est configuré à 2V/div, tandis que l’échelle horizontale est réglée sur 50µs/div. Le déclenchement doit être ajusté entre 1.5V et 5V afin d’assurer une capture fiable de l’impulsion, puis placé en mode single ou normal lorsque le signal de Vmesure atteint la tension attendue.
+    </p>
+
+    <p>
+      Après avoir mis le système sous tension, la LED située en façade s’allume pour indiquer que le générateur est prêt. À ce moment, il devient possible d’appuyer sur le bouton poussoir pour générer l’impulsion. Celle-ci, d’une durée de 100 µs, peut alors être observée sur l’oscilloscope. Elle est appliquée à travers la charge résistive connectée à la carte d’alimentation à tester.
+    </p>
+
+    <p>
+      Pour valider la bonne mise en service du système, plusieurs tests sont réalisés. On vérifie la présence effective de la tension d’impulsion, sa durée précise, ainsi que la répétabilité du signal sur plusieurs cycles. Des dispositifs de sécurité sont également testés, notamment les protections contre les défauts de commutation ou de surtension.
+    </p>
+
+    <p><strong>
+      Notice d’utilisation (FR/EN)
+    </strong></p>
+
+    <p>
+      En usage standard, il convient de vérifier dans un premier temps que la LED est allumée, ce qui confirme que le système est prêt à être utilisé. L’utilisateur peut ensuite appuyer sur le bouton poussoir pour déclencher l’impulsion. Le résultat de cette impulsion est immédiatement visible sur l’oscilloscope. Il est strictement interdit de toucher aux connexions durant le fonctionnement, en raison des hautes tensions en jeu.
+    </p>
+
+    <p>
+      Version anglaise:
+    </p>
+
+    <p>
+      The LED indicator must be ON before operating. Press the push-button to trigger the impulse. The output can be observed on the oscilloscope. Never touch any wiring while the system is powered – this is a high voltage device.
+    </p>
+
+    <p><strong>
+      Présentation orale lors de la mise en service
+    </strong></p>
+
+    <p>
+      Une présentation de mise en service a été prévue pour transmettre les informations essentielles de façon concise, claire et compréhensible. Elle met en avant les étapes fondamentales : d’abord l’ordre de branchement des alimentations, puis la configuration de l’oscilloscope, et enfin la vérification du signal visuel via la LED avant déclenchement de l’impulsion. Le vocabulaire utilisé est accessible, avec des formulations telles que « Assurez-vous que la LED est allumée avant d’appuyer sur le bouton poussoir » ou encore « L’impulsion est générée à travers la résistance de charge, et observée via la sortie Vmesure ».
+    </p>
+
+    <p>
+      Cette présentation met également l’accent sur les points de vigilance, notamment l’importance de ne pas manipuler le système sous tension, de vérifier les réglages de l’oscilloscope, et de respecter l’ordre de câblage. Une attention particulière est portée à la prévention des erreurs humaines, qui pourraient endommager le système ou mettre en danger l’opérateur.
+    </p>
+
+    <p><strong>
+      Fonctionnement logiciel du système
+    </strong></p>
+
+    <p>
+      Le fonctionnement logiciel repose sur un microcontrôleur programmé via l’environnement MPLAB X IDE (v6.20), avec l’utilisation du plugin MCC (v5.5.0) et du Core v5.7.0. Le compilateur est intégré dans cet IDE. Le code est ensuite flashé sur la carte via l’outil ICD3. En cas de dysfonctionnement logiciel, la récupération du programme n’est possible que via les dossiers internes de l’entreprise, accessibles uniquement aux employés habilités. La reprogrammation du microcontrôleur requiert son retrait du support soudé sur la carte, une opération qui doit impérativement être effectuée lorsque le banc est hors tension. Le microcontrôleur est ensuite reprogrammé sur une breadboard ou un dispositif équivalent, évitant ainsi toute mise sous tension du banc durant cette phase.
+    </p>
+
+    <p>
+      La mise en place de ce générateur d’impulsions haute tension a nécessité une approche rigoureuse, tant sur le plan technique que sécuritaire. Grâce à une procédure d’installation détaillée, une notice d’utilisation multilingue et une documentation logicielle complète, le système peut être mis en service de manière fiable et sécurisée. Ce travail s’inscrit dans une logique de qualité, de traçabilité et de maîtrise des risques indispensable dans le cadre de projets en électronique de puissance.
+    </p>
+  </main>
+
+  <nav>
+    <a href="index.html">&larr; Retour à l'accueil</a>
+  </nav>
+
+</body>
+</html>
