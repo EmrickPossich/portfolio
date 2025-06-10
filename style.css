@@ -1,0 +1,101 @@
+html{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1{
+    text-align: center;
+    padding: 50px;
+    margin: 0px;
+    background-color: #5f9ea0;
+}
+
+h4{
+    margin-right: 2%;
+}
+
+.researchContainer{
+    margin: 5% 10% 10% 10%;
+}
+
+.inline{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin: 5px 0px 50px 0px;
+    text-align: center;
+}
+
+.flex_column{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    margin: 0px 40px 0px 20px;
+    text-align: center;
+}
+
+.time_count{
+    padding: 0px 5px 0px 5px;
+    border: #5f9ea0;
+    border-width: 2px 2px 2px 2px;
+    border-style: solid;
+    min-width: 10%;
+}
+
+.inline_buttons{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+footer{
+    position:absolute;
+    bottom: 0;
+    margin: 75px 50px 0px 50px;
+}
+
+.inlinefooter{
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+button, #selectTableBTN{
+    min-width: 12%;
+    background-color: #bfd7d9;
+    border: #5f9ea0;
+    border-width: 2px;
+    border-style: solid;
+    border-top: 0;
+    border-left: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover{
+    
+    background-color: #8fb8bc;
+    font-weight: bolder;
+    color: #eff5f5;
+}
+
+#selectTableBTN{
+    min-width: 200px;
+}
+
+.selected{
+    background-color: #5f9ea0;
+    font-weight: bolder;
+    color: #eff5f5;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}

@@ -104,13 +104,13 @@
       L’objectif de ma mission était donc de concevoir une procédure d’essai fiable et reproductible, permettant de valider le bon fonctionnement ou non du système, en comparant les résultats obtenus avec ceux d’un panel parfaitement opérationnel. Cette procédure devait également pouvoir être utilisée par d’autres opérateurs, tout en assurant la rigueur et la traçabilité attendues dans un contexte professionnel.
     </p>
 
+    <p><strong>
+      Déroulement de la procédure de test
+    </strong></p>	
+
     <p>
       Pour établir une base de référence fiable, j’ai commencé par sélectionner un modèle identique (ODYSSEE21CIC en stock IMMO), disponible en interne et destiné à des démonstrations ou à des tests. Ce panel a été installé dans le laboratoire, dans des conditions standard, à température ambiante d’environ 21°C. Plusieurs logiciels spécialisés ont alors été utilisés pour mesurer les performances et les comportements thermiques du système : PerformanceTest V11 a permis de générer un score global pour le processeur, les capacités graphiques (2D/3D), la mémoire vive et le disque SSD ; le logiciel Scope Pro v4.13 (Transcend) a quant à lui mesuré les vitesses de lecture et d’écriture du disque SSD en condition stable (état IDLE, à température basse) ; enfin, un stress test a été conduit via BurnInTest V10.2, mobilisant l’ensemble des ressources matérielles pendant 10 minutes à pleine charge. Pour compléter cette analyse, j’ai utilisé HWMonitor V1.54 afin de relever les températures des cœurs CPU, de la SSD et la puissance électrique consommée.
     </p>
-
-    <p><strong>
-      Déroulement de la procédure de test
-    </strong></p>
 
     <p>
       Une fois les valeurs de référence obtenues, j’ai procédé à une répétition des tests, mais cette fois à distance, en contrôlant le panel via le logiciel TeamViewer installé sur le PC local et sur l’appareil testé. L’objectif de cette étape était de s’assurer que les performances mesurées à distance restaient représentatives de celles constatées localement, malgré la couche logicielle de prise en main à distance. Les résultats ont montré des écarts mineurs, notamment une température SSD légèrement plus élevée à distance, mais des scores de performance relativement proches, comme on peut le voir sur le tableau de comparaison des résultats de la figure 1.
@@ -143,7 +143,7 @@
 
     <figure>
       <img src="figure2-Check-list.jpg" alt="Check-list" />
-      <figcaption>Figure 2 – Check-list des procédures à vérifier ppoint par point à la fin de la procédure de test</figcaption>
+      <figcaption>Figure 2 – Check-list des procédures à vérifier point par point à la fin de la procédure de test</figcaption>
     </figure>
 
     <p>
